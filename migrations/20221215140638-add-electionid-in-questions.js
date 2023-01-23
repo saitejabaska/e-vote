@@ -3,12 +3,12 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.addColumn("Questions", "elecID", {
+    await queryInterface.addColumn("Ques", "elecID", {
       type: Sequelize.DataTypes.INTEGER,
     });
 
     await queryInterface.sequelize.query(
-      'ALTER TABLE "Questions" ADD CONSTRAINT "Questions_elecId_Elections_fk" FOREIGN KEY ("elecId") REFERENCES "Elections" (id) MATCH SIMPLE ON DELETE CASCADE'
+      'ALTER TABLE "Ques" ADD CONSTRAINT "Ques_elecId_Elections_fk" FOREIGN KEY ("elecId") REFERENCES "Elections" (id) MATCH SIMPLE ON DELETE CASCADE'
     );
 
     // await queryInterface.addConstraint("Questions", {
@@ -23,6 +23,6 @@ module.exports = {
 
   async down(queryInterface, Sequelize) {
     // console.log("hi");
-    await queryInterface.removeColumn("Questions", "elecId");
+    await queryInterface.removeColumn("Ques", "elecId");
   },
 };
